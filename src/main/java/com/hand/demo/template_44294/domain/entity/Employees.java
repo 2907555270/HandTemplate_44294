@@ -1,5 +1,7 @@
 package com.hand.demo.template_44294.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,6 +11,7 @@ import java.util.Date;
  *
  * @author EMP_44294 2023/09/07 11:26
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Employees implements Serializable {
     private Integer employeeId;
 

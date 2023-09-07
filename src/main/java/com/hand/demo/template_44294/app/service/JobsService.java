@@ -2,6 +2,7 @@ package com.hand.demo.template_44294.app.service;
 
 import com.hand.demo.template_44294.domain.entity.Jobs;
 import com.hand.demo.template_44294.domain.exception.CustomerException;
+import com.hand.demo.template_44294.domain.vo.DepartmentVo;
 
 import java.util.List;
 
