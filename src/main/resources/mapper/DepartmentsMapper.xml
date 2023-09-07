@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hand.demo.template_44294.infra.mapper.DepartmentsMapper">
+
+    <resultMap id="BaseResultMap" type="com.hand.demo.template_44294.domain.entity.Departments">
+        <id property="departmentId" column="DEPARTMENT_ID" jdbcType="DECIMAL"/>
+        <result property="departmentName" column="DEPARTMENT_NAME" jdbcType="VARCHAR"/>
+        <result property="managerId" column="MANAGER_ID" jdbcType="DECIMAL"/>
+        <result property="locationId" column="LOCATION_ID" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        DEPARTMENT_ID
+        ,DEPARTMENT_NAME,MANAGER_ID,
+        LOCATION_ID
+    </sql>
+</mapper>
