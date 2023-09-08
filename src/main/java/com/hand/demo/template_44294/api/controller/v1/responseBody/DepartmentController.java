@@ -1,15 +1,12 @@
-package com.hand.demo.template_44294.api.controller.v1;
+package com.hand.demo.template_44294.api.controller.v1.responseBody;
 
 import com.hand.demo.template_44294.app.service.DepartmentsService;
 import com.hand.demo.template_44294.domain.vo.DepartmentVo;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * description

@@ -1,4 +1,4 @@
-package com.hand.demo.template_44294.api.controller.v1;
+package com.hand.demo.template_44294.api.controller.v1.responseBody;
 
 import com.hand.demo.template_44294.app.service.JobsService;
 import com.hand.demo.template_44294.domain.entity.Jobs;

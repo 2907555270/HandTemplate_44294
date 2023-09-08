@@ -11,6 +11,16 @@ spring:
   profiles:
     active:
       - dev
+  # thymeleaf
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    check-template-location: true
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    mode: HTML5
 
 # mybatis
 mybatis:

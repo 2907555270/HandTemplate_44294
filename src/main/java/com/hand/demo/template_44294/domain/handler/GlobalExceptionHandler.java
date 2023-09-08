@@ -1,6 +1,6 @@
 package com.hand.demo.template_44294.domain.handler;
 
-import com.hand.demo.template_44294.api.controller.v1.Rs;
+import com.hand.demo.template_44294.api.controller.v1.responseBody.Rs;
 import com.hand.demo.template_44294.domain.exception.CustomerException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;

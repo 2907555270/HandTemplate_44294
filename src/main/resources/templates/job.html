@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+  description  
+  @author EMP 2023/09/08 9:34 
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Page</title>
+    <!-- 引入 Element UI 的 CSS 和 JavaScript 文件 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.6/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/element-ui@2.15.6/lib/index.js"></script>
+    <!-- 引入vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+</head>
+<body>
+<div id="app">
+    <h1>Query Job Info</h1>
+    <h1>{{jobs[0].jobId}}</h1>
+    <h1>{{jobs[0].jobTitle}}</h1>
+    <h1>{{jobs[0].minSalary}}</h1>
+    <h1>{{jobs[0].maxSalary}}</h1>
+    <template>
+        <el-table
+                :data="jobs"
+                height="250"
+                border
+                style="width: 100%">
+            <el-table-column
+                    prop="jobId"
+                    label="ID"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="jobTitle"
+                    label="TITLE"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="maxSalary"
+                    label="MAX_SALARY">
+            </el-table-column>
+            <el-table-column
+                    prop="minSalary"
+                    label="MIN_SALARY">
+            </el-table-column>
+        </el-table>
+    </template>
+</div>
+
+<script type="text/javascript" th:inline="javascript">
+
+    new Vue({
+        el:'#app',
+        data:{
+            // jobs:[[${jobList}]]
+            jobs:[{"jobId":"AC_ACCOUNT","jobTitle":"Public Accountant","minSalary":4200,"maxSalary":9000},{"jobId":"AC_MGR","jobTitle":"Accounting Manager","minSalary":8200,"maxSalary":16000},{"jobId":"AD_ASST","jobTitle":"Administration Assistant","minSalary":3000,"maxSalary":6000},{"jobId":"AD_PRES","jobTitle":"President","minSalary":20080,"maxSalary":40000},{"jobId":"AD_VP","jobTitle":"Administration Vice President","minSalary":15000,"maxSalary":30000},{"jobId":"FI_ACCOUNT","jobTitle":"Accountant","minSalary":4200,"maxSalary":9000},{"jobId":"FI_MGR","jobTitle":"Finance Manager","minSalary":8200,"maxSalary":16000},{"jobId":"HR_REP","jobTitle":"Human Resources Representative","minSalary":4000,"maxSalary":9000},{"jobId":"IT_PROG","jobTitle":"Programmer","minSalary":4000,"maxSalary":10000},{"jobId":"MK_MAN","jobTitle":"Marketing Manager","minSalary":9000,"maxSalary":15000},{"jobId":"MK_REP","jobTitle":"Marketing Representative","minSalary":4000,"maxSalary":9000},{"jobId":"PR_REP","jobTitle":"Public Relations Representative","minSalary":4500,"maxSalary":10500},{"jobId":"PU_CLERK","jobTitle":"Purchasing Clerk","minSalary":2500,"maxSalary":5500},{"jobId":"PU_MAN","jobTitle":"Purchasing Manager","minSalary":8000,"maxSalary":15000},{"jobId":"SA_MAN","jobTitle":"Sales Manager","minSalary":10000,"maxSalary":20080},{"jobId":"SA_REP","jobTitle":"Sales Representative","minSalary":6000,"maxSalary":12008},{"jobId":"SH_CLERK","jobTitle":"Shipping Clerk","minSalary":2500,"maxSalary":5500},{"jobId":"ST_CLERK","jobTitle":"Stock Clerk","minSalary":2008,"maxSalary":5000},{"jobId":"ST_MAN","jobTitle":"Stock Manager","minSalary":5500,"maxSalary":8500},{"jobId":"TEST_0","jobTitle":"TEST_0","minSalary":10000,"maxSalary":10},{"jobId":"TEST_1","jobTitle":"TEST_1","minSalary":10000,"maxSalary":10},{"jobId":"TEST_2","jobTitle":"TEST_2","minSalary":10000,"maxSalary":10},{"jobId":"TEST_3","jobTitle":"TEST_3","minSalary":10000,"maxSalary":10},{"jobId":"TEST_4","jobTitle":"TEST_4","minSalary":10000,"maxSalary":10},{"jobId":"TEST_5","jobTitle":"TEST_5","minSalary":10000,"maxSalary":10},{"jobId":"TEST_6","jobTitle":"TEST_6","minSalary":10000,"maxSalary":10},{"jobId":"TEST_7","jobTitle":"TEST_7","minSalary":10000,"maxSalary":10},{"jobId":"TEST_8","jobTitle":"TEST_8","minSalary":10000,"maxSalary":10},{"jobId":"TEST_9","jobTitle":"TEST_9","minSalary":10000,"maxSalary":10}]
+        }
+    })
+</script>
+</body>
+</html>

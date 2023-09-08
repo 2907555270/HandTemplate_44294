@@ -1,10 +1,9 @@
-package com.hand.demo.template_44294.api.controller.v1;
+package com.hand.demo.template_44294.api.controller.v1.responseBody;
 
 import com.hand.demo.template_44294.domain.exception.CustomerException;
 import com.hand.demo.template_44294.app.service.UserService;
 import com.hand.demo.template_44294.api.controller.v1.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

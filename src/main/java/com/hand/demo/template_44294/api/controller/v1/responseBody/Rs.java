@@ -1,9 +1,7 @@
-package com.hand.demo.template_44294.api.controller.v1;
+package com.hand.demo.template_44294.api.controller.v1.responseBody;
 
 import lombok.Data;
 import org.springframework.http.HttpStatus;
-
-import javax.sound.sampled.AudioFormat;
 
 /**
  * 前后端交互协议
