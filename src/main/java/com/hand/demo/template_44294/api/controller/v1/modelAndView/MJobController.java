@@ -1,6 +1,5 @@
 package com.hand.demo.template_44294.api.controller.v1.modelAndView;
 
-import com.hand.demo.template_44294.api.controller.v1.responseBody.Rs;
 import com.hand.demo.template_44294.app.service.JobsService;
 import com.hand.demo.template_44294.domain.entity.Jobs;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,7 @@ public class MJobController {
     public ModelAndView listAllJobs() {
         List<Jobs> jobs = jobsService.queryAllJobs();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("jobList",jobs);
+        modelAndView.addObject("jobList", jobs);
         modelAndView.setViewName("job");
         return modelAndView;
     }
@@ -45,8 +44,13 @@ public class MJobController {
      * @return 符合条件的工作信息
      */
     @PostMapping("/list")
-    public Rs listJobsByCondition(@RequestBody Jobs jobs) {
+    public ModelAndView listJobsByCondition(@RequestBody Jobs jobs) {
         List<Jobs> list = jobsService.queryJobsByConditions(jobs);
-        return Rs.success(null, list);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("jobList", list);
+        modelAndView.setViewName("job");
+        return modelAndView;
     }
+
+
 }

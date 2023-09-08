@@ -1,7 +1,9 @@
 package com.hand.demo.template_44294.domain.vo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -10,7 +12,8 @@ import java.math.BigDecimal;
  * @author EMP_44294 2023/09/07 18:43
  */
 @Data
-public class CourseVo {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class CourseVo implements Serializable {
     /**
      * 课程id
      */

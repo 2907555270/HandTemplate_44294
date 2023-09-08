@@ -1,5 +1,6 @@
 package com.hand.demo.template_44294.domain.entity;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,8 +10,7 @@ import java.io.Serializable;
  * 
  * @TableName student_course
  */
-@Setter
-@Getter
+@Data
 public class StudentCourse implements Serializable {
     /**
      * 

@@ -1,8 +1,10 @@
 package com.hand.demo.template_44294.domain.vo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.hand.demo.template_44294.domain.entity.Course;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +13,8 @@ import java.util.List;
  * @author EMP_44294 2023/09/07 18:41
  */
 @Data
-public class StudentVo {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class StudentVo implements Serializable {
     /**
      * 学生id
      */

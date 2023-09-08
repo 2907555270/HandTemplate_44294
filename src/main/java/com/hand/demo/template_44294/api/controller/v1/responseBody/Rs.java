@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 @Data
 public class Rs {
     private Integer code;
+    private Boolean flag;
     private String msg;
     private Object data;
 
@@ -24,6 +25,7 @@ public class Rs {
     public static Rs success(String msg, Object data) {
         Rs rs = new Rs();
         rs.setCode(HttpStatus.OK.value());
+        rs.setFlag(true);
         rs.setMsg(msg);
         rs.setData(data);
         return rs;
@@ -37,6 +39,7 @@ public class Rs {
      */
     public static Rs error(String msg) {
         Rs rs = new Rs();
+        rs.setFlag(false);
         rs.setCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
         rs.setMsg(msg);
         return rs;

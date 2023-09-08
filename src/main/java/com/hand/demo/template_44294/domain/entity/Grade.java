@@ -1,5 +1,6 @@
 package com.hand.demo.template_44294.domain.entity;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,8 +11,7 @@ import java.math.BigDecimal;
  * 
  * @TableName grade
  */
-@Setter
-@Getter
+@Data
 public class Grade implements Serializable {
     /**
      * 

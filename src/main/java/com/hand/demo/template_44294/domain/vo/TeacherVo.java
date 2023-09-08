@@ -1,6 +1,9 @@
 package com.hand.demo.template_44294.domain.vo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * description
@@ -8,7 +11,8 @@ import lombok.Data;
  * @author EMP_44294 2023/09/07 18:55
  */
 @Data
-public class TeacherVo {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class TeacherVo implements Serializable {
     /**
      * 教师id
      */

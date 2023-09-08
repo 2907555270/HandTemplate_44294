@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <!--
-  description  
+  显示和查询工作信息 Vue
   @author EMP 2023/09/08 9:34 
 -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Job Page</title>
-    <!-- 引入 Element UI 的 CSS 和 JavaScript 文件 -->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.6/lib/theme-chalk/index.css">
-    <script src="https://unpkg.com/element-ui@2.15.6/lib/index.js"></script>
-    <!-- 引入vue -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+    <!-- 引入 Element UI 的 CSS 和 JavaScript 文件 -->  <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 </head>
 <body>
 <div id="app">
     <h1>Query Job Info</h1>
-    <h1>{{jobs[0].jobId}}</h1>
-    <h1>{{jobs[0].jobTitle}}</h1>
-    <h1>{{jobs[0].minSalary}}</h1>
-    <h1>{{jobs[0].maxSalary}}</h1>
+
+    <!-- 搜索框 -->
+    <el-form :inline="true" :model="searchCondition" class="demo-form-inline" size="small">
+        <el-form-item label="id">
+            <el-input v-model="searchCondition.jobId" placeholder="jobId"></el-input>
+        </el-form-item>
+        <el-form-item label="Title">
+            <el-input v-model="searchCondition.jobTitle" placeholder="title"></el-input>
+        </el-form-item>
+        <el-form-item label="MinSalary">
+            <el-input v-model="searchCondition.minSalary" placeholder="minSalary"></el-input>
+        </el-form-item>
+        <el-form-item label="MaxSalary">
+            <el-input v-model="searchCondition.maxSalary" placeholder="maxSalary"></el-input>
+        </el-form-item>
+        <el-form-item>
+            <!-- <el-button type="primary" @click="queryByCondition(false)">同步查询</el-button> -->
+            <el-button type="primary" @click="queryByCondition()">异步查询</el-button>
+            <el-button @click="resetForm">reset</el-button>
+        </el-form-item>
+    </el-form>
+
+    <!-- 表格1 -->
     <template>
         <el-table
                 :data="jobs"
@@ -46,17 +62,88 @@
             </el-table-column>
         </el-table>
     </template>
+
+    <!-- 间距拉开 -->
+    <div style="margin-top: 100px"></div>
+
+    <!-- 表格2 -->
+    <table style="width: 100%;border: 2px solid;text-align: center">
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>MinSalary</th>
+            <th>MaxSalary</th>
+        </tr>
+        <tr th:each="job:${jobList}">
+            <td th:text="${job.getJobId()}"></td>
+            <td th:text="${job.getJobTitle()}"></td>
+            <td th:text="${job.getMinSalary()}"></td>
+            <td th:text="${job.getMaxSalary()}"></td>
+        </tr>
+    </table>
 </div>
 
-<script type="text/javascript" th:inline="javascript">
 
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<!-- import axios -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="text/javascript" th:inline="javascript">
     new Vue({
-        el:'#app',
-        data:{
-            // jobs:[[${jobList}]]
-            jobs:[{"jobId":"AC_ACCOUNT","jobTitle":"Public Accountant","minSalary":4200,"maxSalary":9000},{"jobId":"AC_MGR","jobTitle":"Accounting Manager","minSalary":8200,"maxSalary":16000},{"jobId":"AD_ASST","jobTitle":"Administration Assistant","minSalary":3000,"maxSalary":6000},{"jobId":"AD_PRES","jobTitle":"President","minSalary":20080,"maxSalary":40000},{"jobId":"AD_VP","jobTitle":"Administration Vice President","minSalary":15000,"maxSalary":30000},{"jobId":"FI_ACCOUNT","jobTitle":"Accountant","minSalary":4200,"maxSalary":9000},{"jobId":"FI_MGR","jobTitle":"Finance Manager","minSalary":8200,"maxSalary":16000},{"jobId":"HR_REP","jobTitle":"Human Resources Representative","minSalary":4000,"maxSalary":9000},{"jobId":"IT_PROG","jobTitle":"Programmer","minSalary":4000,"maxSalary":10000},{"jobId":"MK_MAN","jobTitle":"Marketing Manager","minSalary":9000,"maxSalary":15000},{"jobId":"MK_REP","jobTitle":"Marketing Representative","minSalary":4000,"maxSalary":9000},{"jobId":"PR_REP","jobTitle":"Public Relations Representative","minSalary":4500,"maxSalary":10500},{"jobId":"PU_CLERK","jobTitle":"Purchasing Clerk","minSalary":2500,"maxSalary":5500},{"jobId":"PU_MAN","jobTitle":"Purchasing Manager","minSalary":8000,"maxSalary":15000},{"jobId":"SA_MAN","jobTitle":"Sales Manager","minSalary":10000,"maxSalary":20080},{"jobId":"SA_REP","jobTitle":"Sales Representative","minSalary":6000,"maxSalary":12008},{"jobId":"SH_CLERK","jobTitle":"Shipping Clerk","minSalary":2500,"maxSalary":5500},{"jobId":"ST_CLERK","jobTitle":"Stock Clerk","minSalary":2008,"maxSalary":5000},{"jobId":"ST_MAN","jobTitle":"Stock Manager","minSalary":5500,"maxSalary":8500},{"jobId":"TEST_0","jobTitle":"TEST_0","minSalary":10000,"maxSalary":10},{"jobId":"TEST_1","jobTitle":"TEST_1","minSalary":10000,"maxSalary":10},{"jobId":"TEST_2","jobTitle":"TEST_2","minSalary":10000,"maxSalary":10},{"jobId":"TEST_3","jobTitle":"TEST_3","minSalary":10000,"maxSalary":10},{"jobId":"TEST_4","jobTitle":"TEST_4","minSalary":10000,"maxSalary":10},{"jobId":"TEST_5","jobTitle":"TEST_5","minSalary":10000,"maxSalary":10},{"jobId":"TEST_6","jobTitle":"TEST_6","minSalary":10000,"maxSalary":10},{"jobId":"TEST_7","jobTitle":"TEST_7","minSalary":10000,"maxSalary":10},{"jobId":"TEST_8","jobTitle":"TEST_8","minSalary":10000,"maxSalary":10},{"jobId":"TEST_9","jobTitle":"TEST_9","minSalary":10000,"maxSalary":10}]
+        el: '#app',
+        data: {
+            // 搜索条件
+            searchCondition: {
+                jobId: "",
+                jobTitle: "",
+                minSalary: "",
+                maxSalary: ""
+            },
+            // 返回的工作信息
+            jobs: [[${jobList}]]
+        },
+        created: {},
+        methods: {
+            // 按条件查询
+            queryByCondition() {
+                    axios({
+                        method: 'post',
+                        url: 'http://localhost:8082/jobs/list',
+                        data: this.searchCondition
+                    }).then(res=>{
+                        let data = res.data
+                        if(data.flag){
+                            this.jobs = data.data
+                        }else{
+                            alert(data.msg)
+                        }
+                    })
+            },
+            // 重置表单
+            resetForm() {
+                this.searchCondition = {}
+                this.queryByCondition()
+            }
         }
     })
 </script>
-</body>
+<style>
+    tr {
+        border: 2px solid;
+        background-color: beige;
+    }
+
+    td {
+        border: 2px solid;
+    }
+
+    th {
+        font-size: large;
+        color: black;
+        font-weight: bolder;
+    }
+</style>
 </html>

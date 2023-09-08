@@ -1,5 +1,7 @@
 package com.hand.demo.template_44294.domain.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -7,6 +9,7 @@ import java.io.Serializable;
  *
  * @author EMP_44294 2023/09/07 11:26
  */
+@Data
 public class Jobs implements Serializable {
     private String jobId;
 
@@ -17,36 +20,4 @@ public class Jobs implements Serializable {
     private Integer maxSalary;
 
     private static final long serialVersionUID = 1L;
-
-    public String getJobId() {
-        return jobId;
-    }
-
-    public void setJobId(String jobId) {
-        this.jobId = jobId;
-    }
-
-    public String getJobTitle() {
-        return jobTitle;
-    }
-
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
-    }
-
-    public Integer getMinSalary() {
-        return minSalary;
-    }
-
-    public void setMinSalary(Integer minSalary) {
-        this.minSalary = minSalary;
-    }
-
-    public Integer getMaxSalary() {
-        return maxSalary;
-    }
-
-    public void setMaxSalary(Integer maxSalary) {
-        this.maxSalary = maxSalary;
-    }
 }
