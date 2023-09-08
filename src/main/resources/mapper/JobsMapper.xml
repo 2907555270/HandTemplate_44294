@@ -28,20 +28,18 @@
         <include refid="Base_Column_List"/>
         from jobs
         <where>
-            <trim suffixOverrides="and">
-                <if test="jobId!=null">
-                    JOB_ID = #{jobId} and
-                </if>
-                <if test="jobTitle!=null">
-                    JOB_TITLE LIKE CONCAT(#{jobTitle},'%') and
-                </if>
-                <if test="minSalary!=null">
-                    MIN_SALARY >= #{minSalary} and
-                </if>
-                <if test="maxSalary!=null">
-                    MAX_SALARY &lt;= #{maxSalary} and
-                </if>
-            </trim>
+            <if test="jobId!=null">
+                and JOB_ID = #{jobId}
+            </if>
+            <if test="jobTitle!=null">
+                and JOB_TITLE LIKE CONCAT(#{jobTitle},'%')
+            </if>
+            <if test="minSalary!=null">
+                and MIN_SALARY >= #{minSalary}
+            </if>
+            <if test="maxSalary!=null">
+                and MAX_SALARY &lt;= #{maxSalary}
+            </if>
         </where>
     </select>
 

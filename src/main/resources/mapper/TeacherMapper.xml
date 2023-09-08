@@ -30,9 +30,7 @@
                 </if>
             </trim>
         </set>
-        <where>
-            id =#{id}
-        </where>
+        where id =#{id}
     </update>
 
     <delete id="removeById">
@@ -50,18 +48,15 @@
 
     <select id="selectWithCourseByTid" parameterType="long"
             resultType="com.hand.demo.template_44294.domain.vo.TeacherVo">
-        select
-            t.id   'teacher_id',
-            t.name 'teacher_name',
-            c.id   'course_id',
-            c.name 'course_name'
-        from
-            teacher t
-        left join
-            course c
-        on
-            t.id = c.teacher_id
-        where
-            t.id = #{teacherId};
+        select t.id   'teacher_id',
+               t.name 'teacher_name',
+               c.id   'course_id',
+               c.name 'course_name'
+        from teacher t
+                 left join
+             course c
+             on
+                 t.id = c.teacher_id
+        where t.id = #{teacherId};
     </select>
 </mapper>

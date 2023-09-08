@@ -24,29 +24,26 @@
     <update id="updateById" parameterType="com.hand.demo.template_44294.domain.entity.Student">
         update student
         <set>
-            <trim suffixOverrides=",">
-                <if test="name!=null">
-                    name = #{name},
-                </if>
-            </trim>
+            <if test="name!=null">
+                name = #{name},
+            </if>
         </set>
-        <where>
-            id=#{id}
-        </where>
+        where id=#{id}
     </update>
 
     <delete id="removeById">
-        delete from student
-        <where>
-            id=#{id}
-        </where>
+        delete
+        from
+            student
+        where
+            id = #{id}
     </delete>
 
     <select id="selectAll" resultType="com.hand.demo.template_44294.domain.entity.Student">
         select
-        <include refid="Base_Column_List"/>
+            <include refid="Base_Column_List"/>
         from
-        student
+            student
     </select>
 
     <resultMap id="stuWithCourseAndScore" type="com.hand.demo.template_44294.domain.vo.StudentVo">
@@ -70,22 +67,22 @@
                t.name as 'teacher_name'
         from student_course sc
         left join
-             student s
-        on
-             sc.student_id = s.id
+            student s
+            on
+            sc.student_id = s.id
         left join
-             course c
-        on
-                 sc.course_id = c.id
+            course c
+            on
+            sc.course_id = c.id
         left join
-             grade g
-        on
-             g.course_id = sc.course_id
-             and
-             g.student_id = sc.student_id
+            grade g
+            on
+            g.course_id = sc.course_id
+            and
+            g.student_id = sc.student_id
         left join
-             teacher t
-        on
-             t.id = c.teacher_id;
+            teacher t
+            on
+            t.id = c.teacher_id;
     </select>
 </mapper>

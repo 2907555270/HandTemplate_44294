@@ -17,7 +17,8 @@
     </sql>
 
     <insert id="insertBatch" useGeneratedKeys="true">
-        insert into grade(student_id, course_id, score)
+        insert into
+            grade(student_id, course_id, score)
         values
         <foreach collection="gradeList" separator="," item="grade">
             (#{grade.studentId},#{grade.courseId},#{grade.score})
@@ -39,21 +40,21 @@
                 </if>
             </trim>
         </set>
-        <where>
-            id =#{id}
-        </where>
+        where id =#{id}
     </update>
 
     <delete id="removeById">
         delete
-        from grade
-        where id = #{id}
+        from
+            grade
+        where
+            id = #{id}
     </delete>
 
     <select id="selectAll" resultType="com.hand.demo.template_44294.domain.entity.Grade">
         select
-        <include refid="Base_Column_List"/>
+            <include refid="Base_Column_List"/>
         from
-        grade
+            grade
     </select>
 </mapper>

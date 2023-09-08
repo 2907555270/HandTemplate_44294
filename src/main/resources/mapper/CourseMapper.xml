@@ -15,7 +15,8 @@
     </sql>
 
     <insert id="insertBatch" useGeneratedKeys="true">
-        insert into course(name, teacher_id)
+        insert into
+            course(name, teacher_id)
         values
         <foreach collection="courseList" separator="," item="course">
             (#{course.name},#{course.teacherId})
@@ -34,16 +35,11 @@
                 </if>
             </trim>
         </set>
-        <where>
-            id=#{id}
-        </where>
+        where id=#{id}
     </update>
 
     <delete id="removeById">
-        delete from course
-        <where>
-            id=#{id}
-        </where>
+        delete from course where id=#{id}
     </delete>
 
     <select id="selectAll" resultType="com.hand.demo.template_44294.domain.entity.Course">
